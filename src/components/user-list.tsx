@@ -10,7 +10,7 @@ interface UserListProps {
 
 const UserList = ({ availableUserAccounts, selectUser, currentIndex }: UserListProps) => {
   return (
-    <ul className="absolute max-h-[400px] w-[80vw] overflow-hidden overflow-y-scroll rounded-lg border border-neutral-700 bg-neutral-800 shadow-lg md:w-[400px]">
+    <ul className="absolute max-h-[40dvh] w-[80vw] overflow-hidden overflow-y-scroll rounded-lg border border-neutral-700 bg-neutral-800 shadow-lg md:w-[400px]">
       {availableUserAccounts.length !== 0 ? (
         availableUserAccounts.map((account, i) => (
           <UserListItem
