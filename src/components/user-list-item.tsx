@@ -2,6 +2,7 @@ import type { Account } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import { memo, useEffect, useRef } from "react";
+import UserAvatar from "./user-avatar";
 
 interface UserListItemProps extends React.HTMLAttributes<HTMLLIElement> {
   account: Account;
@@ -26,17 +27,7 @@ const UserListItem = ({ account, selected, ...rest }: UserListItemProps) => {
       )}
       key={account.email}
       {...rest}>
-      <div className="flex flex-row items-center gap-4">
-        <div className="aspect-square size-10 rounded-full border border-neutral-500 bg-neutral-700">
-          <Image
-            height={40}
-            width={40}
-            src={account.imageUrl}
-            alt={`${account.username}'s profile picture`}
-          />
-        </div>
-        <h5>{account.username}</h5>
-      </div>
+      <UserAvatar account={account} />
       <p className="text-neutral-500">{account.email}</p>
     </li>
   );
