@@ -9,7 +9,7 @@ import Skeleton from "./skeleton";
 
 const UserList = dynamic(() => import("./user-list"), {
   loading: () => (
-    <Skeleton className="absolute size-[400px] overflow-hidden rounded-lg border border-neutral-700 shadow-lg " />
+    <Skeleton className="absolute h-[40dvh] w-[80vw]  overflow-hidden rounded-lg border border-neutral-700 shadow-lg md:w-[400px]" />
   ),
 });
 
