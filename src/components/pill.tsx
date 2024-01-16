@@ -1,14 +1,17 @@
+import { cn } from "@/lib/utils";
 import { memo } from "react";
 
 interface PillProps extends React.HTMLAttributes<HTMLLIElement> {}
 
-const Pill = ({ children, ...rest }: PillProps) => {
-  return (
-    <li className="flex w-40 list-none items-center justify-center rounded-md border p-2" {...rest}>
-      {children}
-    </li>
-  );
-};
+const Pill = ({ className, ...rest }: PillProps) => (
+  <li
+    className={cn(
+      "flex w-40 list-none items-center justify-between rounded-md border border-neutral-700 bg-neutral-900 p-2",
+      className
+    )}
+    {...rest}
+  />
+);
 
 Pill.dispkayName = "Pill";
 

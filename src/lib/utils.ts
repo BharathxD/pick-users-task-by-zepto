@@ -4,4 +4,6 @@ import { twMerge } from "tailwind-merge";
 
 const cn = (...inputs: ClassValue[]): string => twMerge(clsx(inputs));
 
-export { cn };
+const sanitizeValue = (value: string): string => value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+
+export { cn, sanitizeValue };

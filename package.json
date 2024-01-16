@@ -1,11 +1,11 @@
 {
-  "name": "chip-feature",
+  "name": "pick-users",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "build": "next build",
     "check": "pnpm lint && pnpm typecheck && pnpm format:check",
-    "dev": "next dev --turbo",
+    "dev": "next dev",
     "fmc": "prettier --check \"**/*.{ts,tsx,mdx}\"",
     "fmw": "prettier --write \"**/*.{ts,tsx,mdx}\"",
     "lnt": "next lint",
@@ -14,28 +14,29 @@
   },
   "dependencies": {
     "clsx": "^2.1.0",
+    "lucide-react": "^0.309.0",
     "next": "14.0.4",
     "react": "^18",
     "react-dom": "^18",
     "tailwind-merge": "^2.2.0"
   },
   "devDependencies": {
+    "@ianvs/prettier-plugin-sort-imports": "^4.1.1",
+    "@total-typescript/ts-reset": "^0.5.1",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "@typescript-eslint/eslint-plugin": "^6.19.0",
+    "@typescript-eslint/parser": "^6.19.0",
     "autoprefixer": "^10.0.1",
     "eslint": "^8",
     "eslint-config-next": "14.0.4",
-    "postcss": "^8",
-    "tailwindcss": "^3.3.0",
-    "typescript": "^5",
-    "@ianvs/prettier-plugin-sort-imports": "^4.1.1",
-    "@total-typescript/ts-reset": "^0.5.1",
-    "@typescript-eslint/eslint-plugin": "^6.19.0",
-    "@typescript-eslint/parser": "^6.19.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-tailwindcss": "^3.14.0",
+    "postcss": "^8",
     "prettier": "^3.2.2",
-    "prettier-plugin-tailwindcss": "^0.5.11"
+    "prettier-plugin-tailwindcss": "^0.5.11",
+    "tailwindcss": "^3.3.0",
+    "typescript": "^5"
   }
 }

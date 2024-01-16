@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 interface UseKeyPressProps {
-  targetKey: string;
+  targetKey: KeyboardEvent["key"];
   callback: () => void;
   eventType?: "keydown" | "keyup";
   target?: EventTarget | null;

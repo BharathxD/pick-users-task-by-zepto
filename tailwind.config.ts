@@ -12,6 +12,19 @@ const config: Config = {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic": "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
+      keyframes: {
+        "skeleton-loading": {
+          from: {
+            backgroundPosition: "200% 0",
+          },
+          to: {
+            backgroundPosition: "-200% 0",
+          },
+        },
+      },
+      animation: {
+        skeleton: "skeleton-loading 8s ease-in-out infinite",
+      },
     },
   },
   plugins: [],
