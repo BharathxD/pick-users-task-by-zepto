@@ -20,7 +20,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className={cn("h-dvh bg-gradient-to-br from-neutral-900 to-neutral-950", poppins.className)}>
+      <body className={cn("min-h-dvh bg-gradient-to-br from-neutral-900 to-neutral-950", poppins.className)}>
         {children}
       </body>
     </html>
