@@ -3,16 +3,14 @@ import { forwardRef, memo } from "react";
 
 interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {}
 
-const Input = forwardRef<HTMLInputElement, InputProps>(({ className, type, ...props }, ref) => {
-  return (
-    <input
-      type={type}
-      className={cn("size-full min-h-10 bg-transparent outline-none", className)}
-      ref={ref}
-      {...props}
-    />
-  );
-});
+const Input = forwardRef<HTMLInputElement, InputProps>(({ className, type, ...props }, ref) => (
+  <input
+    type={type}
+    className={cn("size-full min-h-10 bg-transparent outline-none", className)}
+    ref={ref}
+    {...props}
+  />
+));
 
 Input.displayName = "Input";
 

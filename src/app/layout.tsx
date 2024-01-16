@@ -1,9 +1,16 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
+import { Poppins } from "next/font/google";
 
-const inter = Inter({ subsets: ["latin"] });
+/**
+ * Configuration for the Poppins font
+ */
+const poppins = Poppins({
+  weight: ["400", "500", "700"],
+  subsets: ["latin"],
+  variable: "--font-poppins",
+});
 
 export const metadata: Metadata = {
   title: "Pick User | Zepto",
@@ -13,7 +20,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className={cn("h-dvh bg-gradient-to-br from-neutral-900 to-neutral-950", inter.className)}>
+      <body className={cn("h-dvh bg-gradient-to-br from-neutral-900 to-neutral-950", poppins.className)}>
         {children}
       </body>
     </html>

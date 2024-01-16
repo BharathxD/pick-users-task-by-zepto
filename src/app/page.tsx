@@ -14,7 +14,7 @@ const Home = () => (
         &copy; Bharath Lakshman Kumar
       </Link>
     </div>
-    <div className="flex min-h-[61px] w-fit min-w-[420px] rounded-lg border border-neutral-700 bg-neutral-800 p-2 text-sm shadow-sm outline-none file:border-0 file:bg-transparent file:text-sm file:font-medium disabled:cursor-not-allowed disabled:opacity-50">
+    <div className="flex min-h-[76px] w-fit min-w-[420px] rounded-lg border border-neutral-700 bg-neutral-800 p-2 text-sm shadow-sm outline-none file:border-0 file:bg-transparent file:text-sm file:font-medium disabled:cursor-not-allowed disabled:opacity-50">
       <PickUsers />
     </div>
   </main>
