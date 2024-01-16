@@ -1,30 +1,24 @@
 import useKeyPress from "@/hooks/use-key-press";
 import useOnClickOutside from "@/hooks/use-onclick-outside";
-import { Account, accounts } from "@/lib/constants";
+import { accounts, type Account } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 import { memo, useCallback, useEffect, useRef, useState } from "react";
 import { Input } from "./input";
+import UserListItem from "./user-list-item";
 
 interface Props extends React.HTMLAttributes<HTMLUListElement> {
   handleSelectedUser: (email: Account["email"]) => void;
   selectedUsers: Account[];
 }
 
-const Users = ({
-  handleSelectedUser,
-  selectedUsers,
-  className,
-  ...rest
-}: Props) => {
+const Users = ({ handleSelectedUser, selectedUsers, className, ...rest }: Props) => {
   const [selectedItemIndex, setSelectedItemIndex] = useState<number>(-1);
   const [focussed, setIsFocussed] = useState(false);
-  const [searchInput, setSearchInput] = useState("");
   const ref = useRef(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const handleClickOutside = () => setIsFocussed(false);
   useOnClickOutside(ref, handleClickOutside);
-  const [availableAccounts, setAvailableAccounts] =
-    useState<Account[]>(accounts);
+  const [availableAccounts, setAvailableAccounts] = useState<Account[]>(accounts);
   const handleSelectUser = useCallback(
     (i?: number) => {
       if (!i && i !== 0 && selectedItemIndex === -1) return;
@@ -51,11 +45,9 @@ const Users = ({
   const [filter, setFilter] = useState("");
 
   useEffect(() => {
-    setAvailableAccounts((prev) => {
+    setAvailableAccounts(() => {
       const availableAccounts = accounts.filter((account) => {
-        return !selectedUsers.find(
-          (selectedUser) => selectedUser.email === account.email
-        );
+        return !selectedUsers.find((selectedUser) => selectedUser.email === account.email);
       });
       // TODO: Skip special characters
       const filteredAccounts = availableAccounts.filter((account) => {
@@ -64,10 +56,6 @@ const Users = ({
       return filteredAccounts;
     });
   }, [filter, selectedUsers]);
-
-  // const filteredAccounts = availableAccounts.filter((account) =>
-  //   new RegExp(filter, "i").test(account.username)
-  // );
 
   useKeyPress({
     targetKey: "ArrowDown",
@@ -111,16 +99,15 @@ const Users = ({
         onChange={(event) => {
           setFilter(event.target?.value);
         }}
-        className="bg-transparent size-full outline-none px-2 rounded-md"
+        className="size-full rounded-md bg-transparent px-2 outline-none"
       />
       {focussed && (
         <ul
           className={cn(
-            "rounded-lg border bg-neutral-800 border-neutral-700 shadow-lg overflow-hidden",
+            "overflow-hidden rounded-lg border border-neutral-700 bg-neutral-800 shadow-lg",
             className
           )}
-          {...rest}
-        >
+          {...rest}>
           {availableAccounts.map((account, i) => {
             return (
               <UserListItem
@@ -133,30 +120,6 @@ const Users = ({
           })}
         </ul>
       )}
-    </li>
-  );
-};
-
-interface UserListItemProps extends React.HTMLAttributes<HTMLLIElement> {
-  account: Account;
-  selected: boolean;
-}
-
-const UserListItem = ({ account, selected, ...rest }: UserListItemProps) => {
-  return (
-    <li
-      className={cn(
-        "px-4 py-2 hover:bg-neutral-700 hover:cursor-pointer flex flex-row justify-between",
-        selected && "bg-neutral-700"
-      )}
-      key={account.email}
-      {...rest}
-    >
-      <div className="flex flex-row gap-4">
-        <div className="aspect-square size-6 rounded-full bg-neutral-700 border" />
-        <h5>{account.username}</h5>
-      </div>
-      <p className="text-neutral-500">{account.email}</p>
     </li>
   );
 };

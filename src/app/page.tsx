@@ -1,19 +1,15 @@
 "use client";
 
-import { Input } from "@/components/input";
 import Pill from "@/components/pill";
 import Users from "@/components/users";
 import useKeyPress from "@/hooks/use-key-press";
-import { Account, accounts } from "@/lib/constants";
+import { accounts, type Account } from "@/lib/constants";
 import { cn } from "@/lib/utils";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useState } from "react";
 
 export default function Home() {
   const [selectedUsers, setSelectedUsers] = useState<Account[]>([]);
-  const [selectedUserIndex, setSelectedUserIndex] = useState<number>(-1);
-  useEffect(() => {
-    setSelectedUserIndex((prev) => selectedUsers.length);
-  }, [selectedUsers]);
+  const [selectedUserIndex, setSelectedUserIndex] = useState<number>(selectedUsers.length);
   const handleRemoveSelectedUser = useCallback((email: Account["email"]) => {
     setSelectedUsers((prev) => {
       return prev.filter((account) => account.email !== email);
@@ -56,27 +52,21 @@ export default function Home() {
     targetKey: "Backspace",
     callback: () => {
       setSelectedUsers((prev) => {
-        const newSelectedUsers = [...prev];
-        newSelectedUsers.pop();
-        return newSelectedUsers;
+        return prev.filter((_, i) => i !== selectedUserIndex);
       });
     },
   });
   return (
     <main className="space-y-6 p-24">
       <h1>Pick users</h1>
-      <div className="flex flw-row h-fit w-full border-b border-neutral-700 bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground outline-none disabled:cursor-not-allowed disabled:opacity-50">
+      <div className="flex h-fit w-full border-b border-neutral-700 bg-transparent px-3 py-1 text-sm shadow-sm outline-none transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium disabled:cursor-not-allowed disabled:opacity-50">
         <ul className="flex flex-row flex-wrap gap-2">
           {selectedUsers.length !== 0 &&
             selectedUsers.map((account) => (
               <Pill
                 key={account.email}
                 onClick={() => handleRemoveSelectedUser(account.email)}
-                className={cn(
-                  account.email === selectedUsers[selectedUserIndex]?.email &&
-                    "bg-red-500"
-                )}
-              >
+                className={cn(account.email === selectedUsers[selectedUserIndex]?.email && "bg-red-500")}>
                 {account.username}
               </Pill>
             ))}

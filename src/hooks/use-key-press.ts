@@ -7,12 +7,7 @@ interface UseKeyPressProps {
   target?: EventTarget | null;
 }
 
-function useKeyPress({
-  targetKey,
-  callback,
-  target,
-  eventType = "keydown",
-}: UseKeyPressProps) {
+function useKeyPress({ targetKey, callback, target, eventType = "keydown" }: UseKeyPressProps) {
   const [isPressed, setIsPressed] = useState(false);
 
   useEffect(() => {

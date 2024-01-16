@@ -3,10 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
     "build": "next build",
+    "check": "pnpm lint && pnpm typecheck && pnpm format:check",
+    "dev": "next dev --turbo",
+    "fmc": "prettier --check \"**/*.{ts,tsx,mdx}\"",
+    "fmw": "prettier --write \"**/*.{ts,tsx,mdx}\"",
+    "lnt": "next lint",
     "start": "next start",
-    "lint": "next lint"
+    "tc": "tsc --noEmit"
   },
   "dependencies": {
     "clsx": "^2.1.0",
@@ -24,6 +28,14 @@
     "eslint-config-next": "14.0.4",
     "postcss": "^8",
     "tailwindcss": "^3.3.0",
-    "typescript": "^5"
+    "typescript": "^5",
+    "@ianvs/prettier-plugin-sort-imports": "^4.1.1",
+    "@total-typescript/ts-reset": "^0.5.1",
+    "@typescript-eslint/eslint-plugin": "^6.19.0",
+    "@typescript-eslint/parser": "^6.19.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-tailwindcss": "^3.14.0",
+    "prettier": "^3.2.2",
+    "prettier-plugin-tailwindcss": "^0.5.11"
   }
 }
