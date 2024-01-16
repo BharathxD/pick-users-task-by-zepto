@@ -1,5 +1,5 @@
 import useKeyPress from "@/hooks/use-key-press";
-import { accounts, INITIAL_INDEX, KEYBOARD_EVENTS, type Account } from "@/lib/constants";
+import { accounts, KEYBOARD_EVENTS, type Account } from "@/lib/constants";
 import { useCallback, useState } from "react";
 
 const useUserSelection = () => {

@@ -1,6 +1,5 @@
 import type { Account } from "@/lib/constants";
 import { cn } from "@/lib/utils";
-import Image from "next/image";
 import { memo, useEffect, useRef } from "react";
 import UserAvatar from "./user-avatar";
 
