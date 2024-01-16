@@ -7,7 +7,7 @@ import useUserSelection from "@/hooks/use-user-selection";
 const PickUsers = () => {
   const { selectedUsers, selectedUserIndex, handleRemoveSelectedUser, handleSelectUser } = useUserSelection();
   return (
-    <ul className="flex flex-row flex-wrap items-center gap-2">
+    <ul className="flex flex-row flex-wrap items-center justify-center gap-2">
       {selectedUsers.length !== 0 &&
         selectedUsers.map((account) => (
           <SelectedUserListItem
