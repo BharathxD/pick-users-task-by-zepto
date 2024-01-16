@@ -6,7 +6,7 @@ interface PillProps extends React.HTMLAttributes<HTMLLIElement> {}
 const Pill = ({ className, ...rest }: PillProps) => (
   <li
     className={cn(
-      "flex w-40 list-none items-center justify-between rounded-md border border-neutral-700 bg-neutral-900 p-2",
+      "flex min-w-40 list-none items-center justify-between rounded-md border border-neutral-700 bg-neutral-900 p-2",
       className
     )}
     {...rest}
