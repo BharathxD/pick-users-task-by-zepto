@@ -4,7 +4,7 @@ import { accounts, INITIAL_INDEX, KEYBOARD_EVENTS, type Account } from "@/lib/co
 import { sanitizeValue } from "@/lib/utils";
 import dynamic from "next/dynamic";
 import { memo, useCallback, useEffect, useRef, useState } from "react";
-import { Input } from "./input";
+import Input from "./input";
 import Skeleton from "./skeleton";
 
 const UserList = dynamic(() => import("./user-list"), {

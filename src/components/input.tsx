@@ -1,5 +1,5 @@
 import { cn } from "@/lib/utils";
-import { forwardRef } from "react";
+import { forwardRef, memo } from "react";
 
 interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {}
 
@@ -16,4 +16,4 @@ const Input = forwardRef<HTMLInputElement, InputProps>(({ className, type, ...pr
 
 Input.displayName = "Input";
 
-export { Input };
+export default memo(Input);

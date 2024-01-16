@@ -1,7 +1,7 @@
 import type { Account } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
-import { memo } from "react";
+import { memo, useEffect, useRef } from "react";
 
 interface UserListItemProps extends React.HTMLAttributes<HTMLLIElement> {
   account: Account;
@@ -9,8 +9,17 @@ interface UserListItemProps extends React.HTMLAttributes<HTMLLIElement> {
 }
 
 const UserListItem = ({ account, selected, ...rest }: UserListItemProps) => {
+  const itemRef = useRef<HTMLLIElement>(null);
+
+  useEffect(() => {
+    if (selected && itemRef.current) {
+      itemRef.current.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    }
+  }, [selected]);
+
   return (
     <li
+      ref={itemRef}
       className={cn(
         "flex flex-row items-center justify-between p-3 transition-colors hover:cursor-pointer hover:bg-neutral-700",
         selected && "bg-neutral-700"
